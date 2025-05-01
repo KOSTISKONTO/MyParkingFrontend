@@ -1,0 +1,37 @@
+<div class ="container register">
+    <form [formGroup]="finalbookingForm">
+        <h2>Συμπλήρωσε την Παρακάτω Φόρμα</h2>
+        <div class="form-group" *ngIf="!isLoggin()">
+            <label for="name">Όνομα</label>
+            <div *ngIf="finalbookingForm.get('name')?.invalid && finalbookingForm.get('name')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+            <input formControlName="name" type="text" class="form-control" id="name" placeholder="Όνομα">
+          </div>
+        <br>
+        <div class="form-group" *ngIf="!isLoggin()">
+            <label for="last">Επώνυμο</label>
+            <div *ngIf="finalbookingForm.get('last')?.invalid && finalbookingForm.get('last')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+            <input formControlName="last" type="text" class="form-control" id="last" placeholder="Επώνυμο">
+          </div>
+        <br>
+        <div class="form-group" *ngIf="!isLoggin()">
+            <label for="email">Email</label>
+            <div *ngIf="finalbookingForm.get('email')?.invalid && finalbookingForm.get('email')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+          </div>
+        <br>
+        <div class="form-group">
+            <label for="vehicle">Μάρκα Οχήματος</label>
+            <div *ngIf="finalbookingForm.get('vehicle')?.invalid && finalbookingForm.get('vehicle')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+            <input formControlName="vehicle" type="text" class="form-control" id="vehicle" placeholder="Μάρκα Οχήματος, π.χ. Ford Focus">
+          </div>
+        <br>
+        <div class="form-group">
+            <label for="numberofvehicle">Αριθμός Οχήματος</label>
+            <div *ngIf="finalbookingForm.get('numberofvehicle')?.invalid && finalbookingForm.get('numberofvehicle')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+            <input formControlName="numberofvehicle" type="text" class="form-control" id="numberofvehicle" placeholder="Αριθμός Οχήματος, π.χ. ΑΙΡ 2548">
+          </div>
+        <br>
+        <button type="button" (click)="sumbit()">Κράτηση!</button>
+    </form>
+    
+</div>

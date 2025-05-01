@@ -1,0 +1,18 @@
+<mat-form-field appearance="fill">
+  <div class="label-wrapper">
+    <mat-label>Ώρα</mat-label>
+  </div>
+  <input
+    type="text"
+    matInput
+    [(ngModel)]="selectedTime"
+    [matAutocomplete]="auto"
+    (blur)="onBlur()"
+    placeholder="π.χ. 14:30"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let time of filteredTimeSlots" [value]="time">
+      {{ time }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

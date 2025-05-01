@@ -1,0 +1,48 @@
+<div class ="container register">
+    <form [formGroup]="registerForm">
+      <h1>Εγγραφή Νέου Χρήστη Ιδιοκτήτη Parking</h1>
+      <br>
+        <h2>Συμπλήρωσε την Παρακάτω Φόρμα</h2>
+        <div class="form-group">
+            <label for="name">Όνομα</label>
+            <input formControlName="name" type="text" class="form-control" id="name" placeholder="Όνομα">
+          </div>
+        <br>
+        <div class="form-group">
+            <label for="last">Επώνυμο</label>
+            <input formControlName="last" type="text" class="form-control" id="last" placeholder="Επώνυμο">
+          </div>
+        <br>
+        <div class="form-group">
+            <label for="Afm_Owner">ΑΦΜ Ιδιοκτήτη</label>
+            <input formControlName="Afm_Owner" type="text" class="form-control" id="Afm_Owner" placeholder="ΑΦΜ Ιδιοκτήτη">
+          </div>
+        <br>
+        <div class="form-group">
+            <label for="Identity_owner">Αριθμός Δελτίου Ταυτότητας</label>
+            <input formControlName="Identity_owner" type="text" class="form-control" id="Identity_owner" placeholder="Αριθμός Δελτίου Ταυτότητας">
+          </div>
+        <br>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+          </div>
+        <br>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input formControlName="username" type="text" class="form-control" id="username" aria-describedby="username" placeholder="Username">
+          <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        
+      <br>
+        <button type="submit" class="btn btn-primary" (click)="register()">Υποβολή</button>
+      </form>
+      
+</div>
+<br>
+

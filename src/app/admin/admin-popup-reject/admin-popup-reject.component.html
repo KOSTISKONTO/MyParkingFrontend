@@ -1,0 +1,20 @@
+
+        <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{reject}}</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+  
+    <div class="modal-body">
+        <input type="text" class="form-control" [(ngModel)]="status">
+        <button type="button" class="btn btn-outline-primary" (click)="setupdate(modal)">Ολοκληρωση</button>
+    </div>
+  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Άκυρο</button>
+    </div>
+  </ng-template>
+  
+
+  <button class="btn btn-danger" (click)="open(content)">Απόρριψη</button>
+   

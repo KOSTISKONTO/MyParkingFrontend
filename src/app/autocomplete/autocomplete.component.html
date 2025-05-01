@@ -1,0 +1,27 @@
+<div class="mb-3 position-relative" #autocompleteContainer>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Αναζήτηση διεύθυνσης..."
+    [formControl]="searchControl"
+  />
+  <!-- Dropdown προτάσεων -->
+  <ul
+    *ngIf="suggestions.length > 0"
+    class="list-group position-absolute w-100 shadow mt-1 z-3"
+  >
+    <li
+      *ngFor="let item of suggestions"
+      (click)="selectSuggestion(item)"
+      class="list-group-item list-group-item-action"
+    >
+      {{ item }}
+    </li>
+  </ul>
+</div>
+
+<!-- Επιλεγμένο αποτέλεσμα -->
+<div *ngIf="selectedResult" class="mt-3">
+  <h5>📍 Επιλογή:</h5>
+  <p><strong>{{ selectedResult }}</strong></p>
+</div>

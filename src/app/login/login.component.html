@@ -1,0 +1,34 @@
+<div class="container login">
+    <form [formGroup]="loginForm">
+        <h2>Σύνδεση στο Λογαριασμό σου</h2>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input formControlName="username" type="text" class="form-control" id="username" aria-describedby="username" placeholder="Username">
+          <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+      <br>
+        <button type="submit" class="btn btn-primary" (click)="login()">Σύνδεση</button>
+      </form>
+</div>
+
+<br>
+<div class="container register">
+    <h2>Δεν έχεις λογαριασμό?</h2>
+    <h5>Επίλεξε τρόπο εγγραφής</h5>
+    <div class="container">
+        <div class="row">
+          <div class="col"><a class="nav-link active" aria-current="page" routerLink="/registercustomer">Εγγραφή ως Πελάτης</a></div>
+
+          <div class="w-100"></div>
+          <div class="col"><a class="nav-link active" aria-current="page" routerLink="/registerowner">Εγγραφή ως Ιδιοκτήτης Parking</a></div>
+
+        </div>
+      </div>
+</div>
+
+<br>

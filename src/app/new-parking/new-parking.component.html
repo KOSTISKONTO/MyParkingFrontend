@@ -1,0 +1,714 @@
+
+<form [formGroup]="parkingForm">
+  <div class="container">
+    <h1>ΕΙΣΗΓΑΓΕ ΤΑ ΣΤΟΙΧΕΙΑ ΤΗΣ ΕΠΙΧΕΙΡΗΣΗΣ ΣΟΥ</h1>
+    <br><br>
+
+    <!-- ===== ΒΗΜΑ 1 - ΣΤΟΙΧΕΙΑ ΕΠΙΧΕΙΡΗΣΗΣ & ΠΑΡΚΙΝΓΚ ===== -->
+    <div *ngIf="step === 1">
+
+      <!-- ===== ΣΤΟΙΧΕΙΑ ΟΝΟΜΑΣΙΑΣ & ΔΙΕΥΘΥΝΣΗΣ ===== -->
+      <h2>Στοιχεία Ονομασίας και Διεύθυνσης</h2>
+      <div class="row">
+        <div class="col-sm">
+          <div *ngIf="parkingForm.get('name')?.invalid && parkingForm.get('name')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="name" type="text" class="form-control" placeholder="Ονομασία Parking">
+        </div>
+        <div class="col-sm">
+          <div *ngIf="parkingForm.get('address')?.invalid && parkingForm.get('address')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="address" type="text" class="form-control" placeholder="Διεύθυνση">
+        </div>
+        <div class="col-sm">
+          <div *ngIf="parkingForm.get('city')?.invalid && parkingForm.get('city')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="city" type="text" class="form-control" placeholder="Πόλη">
+        </div>
+        <div class="col-sm">
+          <div *ngIf="parkingForm.get('location')?.invalid && parkingForm.get('location')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="location" type="text" class="form-control" placeholder="Περιοχή">
+        </div>
+        <div class="col-sm">
+          <div *ngIf="parkingForm.get('zip')?.invalid && parkingForm.get('zip')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="zip" type="text" class="form-control" placeholder="Ταχυδρομικός Κώδικας">
+        </div>
+      </div>
+
+      <br><br>
+
+      <!-- ===== ΣΤΟΙΧΕΙΑ PARKING ===== -->
+      <h2>Στοιχεία Parking</h2>
+      <div class="row">
+        <div class="col-sm">
+          <div *ngIf="parkingForm.get('afm')?.invalid && parkingForm.get('afm')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="afm" type="text" class="form-control" placeholder="ΑΦΜ">
+        </div>
+        <div class="col-sm">
+          <div *ngIf="parkingForm.get('totalSpaces')?.invalid && parkingForm.get('totalSpaces')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="totalSpaces" type="number" class="form-control" placeholder="Συνολικές Θέσεις Parking">
+        </div>
+      </div>
+
+    
+      <div class="front">
+        <button type="button" class="btn btn-secondary" (click)="addstep()">ΕΠΟΜΕΝΟ</button>
+      </div>
+      <br>
+      
+    </div>
+
+    <!-- ===== ΒΗΜΑ 2 - ΛΕΙΤΟΥΡΓΙΑ, ΠΟΛΙΤΙΚΗ, ΣΥΝΙΔΙΟΚΤΗΤΕΣ ===== -->
+    <div *ngIf="step === 2">
+
+      <!-- ===== ΛΕΙΤΟΥΡΓΙΑ PARKING ===== -->
+      <h2>Λειτουργία Parking</h2>
+      <br>
+      <div class="container case">
+
+        <!-- Δέχεται 24ωρη Φύλαξη -->
+        <h4>Δέχεται 24ωρη Φύλαξη;</h4>
+        <div *ngIf="parkingForm.get('accept24')?.invalid && parkingForm.get('accept24')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="accept24" [value]="true" id="accept24yes">
+          <label class="form-check-label" for="accept24yes">ΝΑΙ</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="accept24" [value]="false" id="accept24no">
+          <label class="form-check-label" for="accept24no">ΟΧΙ</label>
+        </div>
+
+        <br><br>
+
+        <!-- Είναι 24ωρο -->
+        <h4>Είναι 24ωρο;</h4>
+        <div *ngIf="parkingForm.get('is24')?.invalid && parkingForm.get('is24')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="is24" [value]="true" id="is24yes">
+          <label class="form-check-label" for="is24yes">ΝΑΙ</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="is24" [value]="false" id="is24no">
+          <label class="form-check-label" for="is24no">ΟΧΙ</label>
+        </div>
+
+        <div *ngIf="parkingForm.get('is24')?.value === false">
+          <h4>Ώρα Έναρξης</h4>
+          <div *ngIf="parkingForm.get('startTime')?.invalid && parkingForm.get('startTime')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="startTime" type="time" class="form-control">
+
+          <h4>Ώρα Λήξης</h4>
+          <div *ngIf="parkingForm.get('endTime')?.invalid && parkingForm.get('endTime')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+          <input formControlName="endTime" type="time" class="form-control">
+        </div>
+      </div>
+
+       <!-- ===== ΚΟΥΜΠΙΑ ΠΙΣΩ ΕΠΟΜΕΝΟ ===== -->
+       <div class="container button-row">
+        <div class="back">
+          <button type="button" class="btn btn-secondary" (click)="plinstep()">ΠΡΟΗΓΟΥΜΕΝΟ</button>
+        </div>
+        <div class="front">
+          <button type="button" class="btn btn-secondary" (click)="addstep2()">ΕΠΟΜΕΝΟ</button>
+        </div>
+      </div>
+      
+    </div>
+
+    <div *ngIf="step === 5" class="container">
+      <h2>Συνιδιοκτήτες</h2>
+             <p>(Συμπληρώνεται μόνο σε περίπτωση συνιδιοκτησίας και αφού οι άλλοι χρήστες έχουν κάνει εγγραφή στην εφαρμογή.)</p>
+             <div class="container" formArrayName="afmowners">
+               <div *ngFor="let afm of afmowners.controls; let i = index" class="row align-items-center mb-2">
+                 <div class="col-sm-12">
+                   <input [formControlName]="i" type="text" class="form-control" placeholder="ΑΦΜ">
+                 </div>
+                 <div class="col-sm-2">
+                   <button type="button" class="btn btn-danger" (click)="removeOwner(i)" *ngIf="afmowners.length > 1">–</button>
+                 </div>
+               </div>
+             </div>
+       
+             <button type="button" class="btn btn-success" (click)="addOwner()">+ Προσθήκη Συνιδιοκτήτη</button>
+             <div class="container button-row">
+              <div class="back">
+                <button type="button" class="btn btn-secondary" (click)="plinstep()">ΠΡΟΗΓΟΥΜΕΝΟ</button>
+              </div>
+            </div>
+           
+    </div>
+      
+  </div>
+</form>
+
+<div class="container">
+
+
+  <form [formGroup]="PolicyForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="step===3">
+      <h2>Πολιτική Κοστολόγησης</h2>
+    
+      <br>
+      <h4>Επίλεξε είδος κόστους τις Καθημερινές Ημέρες</h4>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="PolicyDayType" [value]="PolicyCost[0]" (click)="setindexpolicy(0,PolicyCost[0] )" id="PolicyDayType">
+              <label class="form-check-label" for="PolicyDayType">Ενιαίο Κόστος</label>
+              <p>(Το κόστος θα είναι ίδιο ανεξάρτητα το πόσο θα μείνει στο parking το όχημα)</p>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="PolicyDayType" [value]="PolicyCost[1]" (click)="setindexpolicy(1, PolicyCost[1])"id="PolicyDayType">
+              <label class="form-check-label" for="PolicyDayType">Κόστος με την ώρα</label>
+              <p>(Το κόστος ορίζεται με την ώρα, εσείς απλά ορίζεται τη χρέωση της ώρας)</p>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="PolicyDayType" [value]="PolicyCost[2]" (click)="setindexpolicy(2, PolicyCost[2])"id="PolicyDayType">
+              <label class="form-check-label" for="PolicyDayType">Κόστος ανάλογα με το εύρος των ωρών.</label>
+              <p>(Το κόστος ορίζεται ανάλογα με το εύρος της ώρας. Ορίστε εύρη ωρών και αντίστοιχη χρέωση. <b>Η συνολική χρέωση θα είναι το άθροισμα του κάθε εύρους). </b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="PolicyDayType" [value]="PolicyCost[3]" (click)="setindexpolicy(3, PolicyCost[3])"id="PolicyDayType">
+              <label class="form-check-label" for="PolicyDayType">Custom Κόστος Ανά εύρος ωρών</label>
+              <p>(Το κόστος ορίζεται ανάλογα με το εύρος της ώρας. Ορίστε εύρη ορών και αντίστοιχη χρέωση. <b>Η συνολική χρέωση θα αφορά μόνο το τελευταίο εύρος τιμών). </b> </p>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="PolicyDayType" [value]="PolicyCost[4]" (click)="setindexpolicy(4, PolicyCost[4])"id="PolicyDayType">
+              <label class="form-check-label" for="PolicyDayType">Κόστος Ανάλογα την ώρα της ημέρας</label>
+              <p>(Το κόστος ορίζεται με βάση τις ώρες εντός της ημέρας που θα κάνει κράτηση ο χρήστης. Ορίστε εύρη ορών και αντίστοιχη χρέωση.<b> Η συνολική χρέωση θα είναι το άθροισμα του κάθε εύρους).</b> </p>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="PolicyDayType" [value]="PolicyCost[5]" (click)="setindexpolicy(5, PolicyCost[5])"id="PolicyDayType">
+              <label class="form-check-label" for="PolicyDayType">Custom Κόστος Ανάλογα την ώρα της ημέρας.</label>
+              <p>(Το κόστος ορίζεται με βάση τις ώρες εντός της ημέρας που θα κάνει κράτηση ο χρήστης. Ορίστε εύρη ορών και αντίστοιχη χρέωση. <b>Η συνολική χρέωση θα αφορά μόνο το τελευταίο εύρος τιμών).</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div *ngIf="getIndexpol()!=-1">
+      
+      
+        <div *ngIf="getIndexpol() === 0">
+          <h4>Ενιαίο Κόστος</h4>
+        
+          <!-- Σφάλμα -->
+          <div *ngIf="PolicyForm.get('FlatCostDaily.flatcost')?.invalid && PolicyForm.get('FlatCostDaily.flatcost')?.touched" style="color: red;">
+            Υποχρεωτικό πεδίο (>= 0)
+          </div>
+        
+          <!-- Input -->
+          <div [formGroup]="flatCost">
+            <input formControlName="flatcost" type="number" class="form-control" placeholder="Ορίστε Κόστος καθ' όλη τη διάρκεια της ημέρας.">
+          </div>
+        </div>
+        
+        <div *ngIf="getIndexpol()===1">
+          <h4>Κόστος με την ώρα</h4>
+          <div *ngIf="PolicyForm.get('CostByHourDaily.cost')?.invalid && PolicyForm.get('CostByHourWeekend.cost')?.touched" style="color: red;">
+            Υποχρεωτικό πεδίο (>= 0)
+          </div>
+          <div [formGroup]="CostByHour">
+            <input formControlName="cost" type="number" class="form-control" placeholder="Ορίστε Κόστος ανά ώρα.">
+          </div>
+        </div>
+        
+      
+        
+        <div *ngIf="getIndexpol() === 2">
+          <h4>Όρισε Ώρες και Κόστος</h4>
+          <div formArrayName="ByHourDaily" class="container">
+            <div *ngFor="let group of HourControls; let i = index" [formGroupName]="i" class="row mb-3">
+              <div class="col-sm">
+                <label>Από</label>
+                <input type="number" formControlName="fromHour" class="form-control" min="0">
+                <div *ngIf="group.get('fromHour')?.invalid && group.get('fromHour')?.touched" class="text-danger">
+                  Υποχρεωτικό πεδίο (>= 0)
+                </div>
+              </div>
+              <div class="col-sm">
+                <label>Έως</label>
+                <input type="number" formControlName="toHour" class="form-control" min="0">
+                <div *ngIf="group.get('toHour')?.invalid && group.get('toHour')?.touched" class="text-danger">
+                  Υποχρεωτικό πεδίο (>= 0)
+                </div>
+              </div>
+              <div class="col-sm">
+                <label>Κόστος</label>
+                <input type="number" formControlName="cost" class="form-control" min="0">
+                <div *ngIf="group.get('cost')?.invalid && group.get('cost')?.touched" class="text-danger">
+                  Υποχρεωτικό πεδίο (>= 0)
+                </div>
+              </div>
+              <div class="col-sm d-flex align-items-end">
+                <button type="button" class="btn btn-danger" (click)="removeHour(i)">Αφαίρεση Ώρας</button>
+              </div>
+            </div>
+        
+            <div class="col-sm d-flex align-items-end">
+              <button type="button" class="btn btn-success" (click)="addHour()">+ Προσθήκη Ώρας</button>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+
+
+
+
+
+            <!--AI-->
+            <!-- ByHourCustomDaily -->
+            <div *ngIf="getIndexpol() === 3">
+              <h4>Όρισε Ώρες και Κόστος (Custom Κόστος Ανά εύρος ωρών)</h4>
+              <div formArrayName="ByHourCustomDaily" class="container">
+                <div *ngFor="let group of ByHourCustomDailyControls; let i = index" [formGroupName]="i" class="row mb-3">
+                  <div class="col-sm">
+                    <label>Από</label>
+                    <input type="number" formControlName="fromHour" class="form-control" min="0">
+                    <div *ngIf="group.get('fromHour')?.invalid && group.get('fromHour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Έως</label>
+                    <input type="number" formControlName="toHour" class="form-control" min="0">
+                    <div *ngIf="group.get('toHour')?.invalid && group.get('toHour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Κόστος</label>
+                    <input type="number" formControlName="cost" class="form-control" min="0">
+                    <div *ngIf="group.get('cost')?.invalid && group.get('cost')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" (click)="removeHourCustom(i)">Αφαίρεση Ώρας</button>
+                  </div>
+                </div>
+                <div class="col-sm d-flex align-items-end">
+                  <button type="button" class="btn btn-success" (click)="addHourCustom()">+ Προσθήκη Ώρας</button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="getIndexpol() === 4">
+              <h4>Όρισε Ώρες και Κόστος (Κόστος Ανάλογα την ώρα της ημέρας)</h4>
+              <div formArrayName="ByLocalTimeDaily" class="container">
+                <div *ngFor="let group of ByLocalTimeDailyControls; let i = index" [formGroupName]="i" class="row mb-3">
+                  <div class="col-sm">
+                    <label>Από</label>
+                    <input type="time" formControlName="fromhour" class="form-control">
+                    <div *ngIf="group.get('fromhour')?.invalid && group.get('fromhour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Έως</label>
+                    <input type="time" formControlName="tohour" class="form-control">
+                    <div *ngIf="group.get('tohour')?.invalid && group.get('tohour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Κόστος</label>
+                    <input type="number" formControlName="cost" class="form-control" min="0">
+                    <div *ngIf="group.get('cost')?.invalid && group.get('cost')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" (click)="removeLocalTime(i)">Αφαίρεση Ώρας</button>
+                  </div>
+                </div>
+                <div class="col-sm d-flex align-items-end">
+                  <button type="button" class="btn btn-success" (click)="addLocalTime()">+ Προσθήκη Ώρας</button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="getIndexpol() === 5">
+              <h4>Όρισε Ώρες και Κόστος (Custom Κόστος Ανάλογα την ώρα της ημέρας)</h4>
+              <div formArrayName="ByLocalTimeCustomDaily" class="container">
+                <div *ngFor="let group of ByLocalTimeCustomDailyControls; let i = index" [formGroupName]="i" class="row mb-3">
+                  <div class="col-sm">
+                    <label>Από</label>
+                    <input type="time" formControlName="fromhour" class="form-control">
+                    <div *ngIf="group.get('fromhour')?.invalid && group.get('fromhour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Έως</label>
+                    <input type="time" formControlName="tohour" class="form-control">
+                    <div *ngIf="group.get('tohour')?.invalid && group.get('tohour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Κόστος</label>
+                    <input type="number" formControlName="cost" class="form-control" min="0">
+                    <div *ngIf="group.get('cost')?.invalid && group.get('cost')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" (click)="removeLocalTimeCustom(i)">Αφαίρεση Ώρας</button>
+                  </div>
+                </div>
+                <div class="col-sm d-flex align-items-end">
+                  <button type="button" class="btn btn-success" (click)="addLocalTimeCustom()">+ Προσθήκη Ώρας</button>
+                </div>
+              </div>
+            </div>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+            
+            
+      
+      </div>
+      
+      <div class="container button-row">
+        <div class="back">
+          <button type="button" class="btn btn-secondary" (click)="plinstep()">ΠΡΟΗΓΟΥΜΕΝΟ</button>
+        </div>
+        <div class="front">
+          <button type="button" class="btn btn-secondary" (click)="addstep3()">ΕΠΟΜΕΝΟ</button>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    <div *ngIf="step === 4">
+      <h2>Πολιτική Κοστολόγησης</h2>
+      <br>
+      <h2>Επίλεξε Πολιτική Χρέωσης για τα ΣαββατοΚύριακα.</h2>
+      <br>
+      <h4>Ίδια με τις Καθημερινές?</h4>
+      
+      <div class="container">
+        <div *ngIf="PolicyForm.get('samedaily')?.invalid && PolicyForm.get('samedaily')?.touched" style="color: red;">Υποχρεωτικό πεδίο</div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="samedaily" [value]="true" id="samedailyyes">
+          <label class="form-check-label" for="samedailyyes">ΝΑΙ</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" formControlName="samedaily" [value]="false" id="samedailyno">
+          <label class="form-check-label" for="samedailyno">ΟΧΙ</label>
+        </div>
+      </div>
+      
+      
+      <div *ngIf="PolicyForm.get('samedaily')?.value === false">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="PolicyWeekendType" [value]="PolicyCost[0]" (click)="setindexpolicyweek(0,PolicyCost[0] )" id="PolicyDayType">
+                <label class="form-check-label" for="PolicyWeekendType">Ενιαίο Κόστος</label>
+                <p>(Το κόστος θα είναι ίδιο ανεξάρτητα το πόσο θα μείνει στο parking το όχημα)</p>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="PolicyWeekendType" [value]="PolicyCost[1]" (click)="setindexpolicyweek(1, PolicyCost[1])"id="PolicyDayType">
+                <label class="form-check-label" for="PolicyWeekendType">Κόστος με την ώρα</label>
+                <p>(Το κόστος ορίζεται με την ώρα, εσείς απλά ορίζεται τη χρέωση της ώρας)</p>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="PolicyWeekendType" [value]="PolicyCost[2]" (click)="setindexpolicyweek(2, PolicyCost[2])"id="PolicyDayType">
+                <label class="form-check-label" for="PolicyWeekendType">Κόστος ανάλογα με το εύρος των ωρών.</label>
+                <p>(Το κόστος ορίζεται ανάλογα με το εύρος της ώρας. Ορίστε εύρη ωρών και αντίστοιχη χρέωση. <b>Η συνολική χρέωση θα είναι το άθροισμα του κάθε εύρους). </b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="PolicyWeekendType" [value]="PolicyCost[3]" (click)="setindexpolicyweek(3, PolicyCost[3])"id="PolicyDayType">
+                <label class="form-check-label" for="PolicyWeekendType">Custom Κόστος Ανά εύρος ωρών</label>
+                <p>(Το κόστος ορίζεται ανάλογα με το εύρος της ώρας. Ορίστε εύρη ορών και αντίστοιχη χρέωση. <b>Η συνολική χρέωση θα αφορά μόνο το τελευταίο εύρος τιμών). </b> </p>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="PolicyWeekendType" [value]="PolicyCost[4]" (click)="setindexpolicyweek(4, PolicyCost[4])"id="PolicyDayType">
+                <label class="form-check-label" for="PolicyWeekendType">Κόστος Ανάλογα την ώρα της ημέρας</label>
+                <p>(Το κόστος ορίζεται με βάση τις ώρες εντός της ημέρας που θα κάνει κράτηση ο χρήστης. Ορίστε εύρη ορών και αντίστοιχη χρέωση.<b> Η συνολική χρέωση θα είναι το άθροισμα του κάθε εύρους).</b> </p>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="PolicyWeekendType" [value]="PolicyCost[5]" (click)="setindexpolicyweek(5, PolicyCost[5])"id="PolicyDayType">
+                <label class="form-check-label" for="PolicyWeekendType">Custom Κόστος Ανάλογα την ώρα της ημέρας.</label>
+                <p>(Το κόστος ορίζεται με βάση τις ώρες εντός της ημέρας που θα κάνει κράτηση ο χρήστης. Ορίστε εύρη ορών και αντίστοιχη χρέωση. <b>Η συνολική χρέωση θα αφορά μόνο το τελευταίο εύρος τιμών).</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div *ngIf="getindexpolweek()!=-1">
+      
+      
+        <div *ngIf="getindexpolweek()===0">
+          <h4>Ενιαίο Κόστος</h4>
+          <div *ngIf="PolicyForm.get('FlatCostWeekend.flatcost.value')?.invalid && PolicyForm.get('FlatCostWeekend.flatcost')?.touched" style="color: red;">
+            Υποχρεωτικό πεδίο (>= 0)
+          </div>
+          <div [formGroup]="flatCostWeekend">
+            <input formControlName="flatcost" type="number" class="form-control" placeholder="Ορίστε Κόστος καθ' όλη τη διάρκεια της ημέρας.">
+          </div>
+        </div>
+        
+      
+    <div *ngIf="getindexpolweek()===1">
+    <h4>Κόστος με την ώρα</h4>
+    <div *ngIf="PolicyForm.get('CostByHourWeekend.cost')?.invalid && PolicyForm.get('CostByHourWeekend.cost')?.touched" style="color: red;">
+      Υποχρεωτικό πεδίο (>= 0)
+    </div>
+    <div [formGroup]="costByHourWeekend">
+      <input formControlName="cost" type="number" class="form-control" placeholder="Ορίστε Κόστος ανά ώρα.">
+    </div>
+  </div>
+
+      
+        
+        <div *ngIf="getindexpolweek() === 2">
+          <h4>Όρισε Ώρες και Κόστος</h4>
+          <div formArrayName="ByHourWeekend" class="container">
+            <div *ngFor="let group of HourControlsWeekend; let i = index" [formGroupName]="i" class="row mb-3">
+              <div class="col-sm">
+                <label>Από</label>
+                <input type="number" formControlName="fromHour" class="form-control" min="0">
+                <div *ngIf="group.get('fromHour')?.invalid && group.get('fromHour')?.touched" class="text-danger">
+                  Υποχρεωτικό πεδίο (>= 0)
+                </div>
+              </div>
+              <div class="col-sm">
+                <label>Έως</label>
+                <input type="number" formControlName="toHour" class="form-control" min="0">
+                <div *ngIf="group.get('toHour')?.invalid && group.get('toHour')?.touched" class="text-danger">
+                  Υποχρεωτικό πεδίο (>= 0)
+                </div>
+              </div>
+              <div class="col-sm">
+                <label>Κόστος</label>
+                <input type="number" formControlName="cost" class="form-control" min="0">
+                <div *ngIf="group.get('cost')?.invalid && group.get('cost')?.touched" class="text-danger">
+                  Υποχρεωτικό πεδίο (>= 0)
+                </div>
+              </div>
+              <div class="col-sm d-flex align-items-end">
+                <button type="button" class="btn btn-danger" (click)="removeHourWeekend(i)">Αφαίρεση Ώρας</button>
+              </div>
+            </div>
+        
+            <div class="col-sm d-flex align-items-end">
+              <button type="button" class="btn btn-success" (click)="addHourWeekend()">+ Προσθήκη Ώρας</button>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+
+
+
+
+
+            <!--AI-->
+            <!-- ByHourCustomDaily -->
+            <div *ngIf="getindexpolweek() === 3">
+              <h4>Όρισε Ώρες και Κόστος (Custom Κόστος Ανά εύρος ωρών)</h4>
+              <div formArrayName="ByHourCustomWeekend" class="container">
+                <div *ngFor="let group of ByHourCustomWeekendControls; let i = index" [formGroupName]="i" class="row mb-3">
+                  <div class="col-sm">
+                    <label>Από</label>
+                    <input type="number" formControlName="fromHour" class="form-control" min="0">
+                    <div *ngIf="group.get('fromHour')?.invalid && group.get('fromHour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Έως</label>
+                    <input type="number" formControlName="toHour" class="form-control" min="0">
+                    <div *ngIf="group.get('toHour')?.invalid && group.get('toHour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Κόστος</label>
+                    <input type="number" formControlName="cost" class="form-control" min="0">
+                    <div *ngIf="group.get('cost')?.invalid && group.get('cost')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" (click)="removeHourCustomWeekend(i)">Αφαίρεση Ώρας</button>
+                  </div>
+                </div>
+                <div class="col-sm d-flex align-items-end">
+                  <button type="button" class="btn btn-success" (click)="addHourCustomWeekend()">+ Προσθήκη Ώρας</button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="getindexpolweek() === 4">
+              <h4>Όρισε Ώρες και Κόστος (Κόστος Ανάλογα την ώρα της ημέρας)</h4>
+              <div formArrayName="ByLocalTimeWeekend" class="container">
+                <div *ngFor="let group of ByLocalTimeWeekendControls; let i = index" [formGroupName]="i" class="row mb-3">
+                  <div class="col-sm">
+                    <label>Από</label>
+                    <input type="time" formControlName="fromhour" class="form-control">
+                    <div *ngIf="group.get('fromhour')?.invalid && group.get('fromhour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Έως</label>
+                    <input type="time" formControlName="tohour" class="form-control">
+                    <div *ngIf="group.get('tohour')?.invalid && group.get('tohour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Κόστος</label>
+                    <input type="number" formControlName="cost" class="form-control" min="0">
+                    <div *ngIf="group.get('cost')?.invalid && group.get('cost')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" (click)="removeLocalTimeWeekend(i)">Αφαίρεση Ώρας</button>
+                  </div>
+                </div>
+                <div class="col-sm d-flex align-items-end">
+                  <button type="button" class="btn btn-success" (click)="addLocalTimeWeekend()">+ Προσθήκη Ώρας</button>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="getindexpolweek() === 5">
+              <h4>Όρισε Ώρες και Κόστος (Custom Κόστος Ανάλογα την ώρα της ημέρας)</h4>
+              <div formArrayName="ByLocalTimeCustomWeekend" class="container">
+                <div *ngFor="let group of ByLocalTimeCustomDailyControls; let i = index" [formGroupName]="i" class="row mb-3">
+                  <div class="col-sm">
+                    <label>Από</label>
+                    <input type="time" formControlName="fromhour" class="form-control">
+                    <div *ngIf="group.get('fromhour')?.invalid && group.get('fromhour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Έως</label>
+                    <input type="time" formControlName="tohour" class="form-control">
+                    <div *ngIf="group.get('tohour')?.invalid && group.get('tohour')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <label>Κόστος</label>
+                    <input type="number" formControlName="cost" class="form-control" min="0">
+                    <div *ngIf="group.get('cost')?.invalid && group.get('cost')?.touched" class="text-danger">
+                      Υποχρεωτικό πεδίο (>= 0)
+                    </div>
+                  </div>
+                  <div class="col-sm d-flex align-items-end">
+                    <button type="button" class="btn btn-danger" (click)="removeLocalTimeCustomWeekend(i)">Αφαίρεση Ώρας</button>
+                  </div>
+                </div>
+                <div class="col-sm d-flex align-items-end">
+                  <button type="button" class="btn btn-success" (click)="addLocalTimeCustomWeekend()">+ Προσθήκη Ώρας</button>
+                </div>
+              </div>
+            </div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="container button-row">
+        <div class="back">
+          <button type="button" class="btn btn-secondary" (click)="plinstep()">ΠΡΟΗΓΟΥΜΕΝΟ</button>
+        </div>
+        <div class="front">
+          <button type="button" class="btn btn-secondary" (click)="addstep4()">ΕΠΟΜΕΝΟ</button>
+        </div>
+      </div>
+    
+    
+      <br>
+
+
+      
+
+      
+    </div>
+
+    <div *ngIf="step===5">
+      <div class="button">
+        <button type="submit" class="btn btn-primary">Υποβολή</button>
+      </div>
+    </div>
+
+    
+    
+
+      
+    
+
+
+  </form>
+
+</div>
+

@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Εγγεγραμένοι Χρήστες - Πελάτες Εφαρμογής</h1>
+    <h3>Σύνολο: </h3>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Α/Α</th>
+        <th scope="col">ID Πελάτη</th>
+        <th scope="col">Όνομα</th>
+        <th scope="col">Επώνυμο</th>
+        <th scope="col">email</th>
+        <th scope="col">Username</th>
+        <th scope="col">Σύνολο Κρατήσεων</th>
+        <th scope="col">Σύνολο Κόστους</th>
+    
+        
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{customer.id}}</td>
+        <td>{{customer.name}}</td>
+        <td>{{customer.lastname}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.username}}</td>
+        <td>{{customer.totalBookings}}</td>
+        <td>{{customer.totalcost}}  ευρώ</td>
+      </tr>
+      </tbody>
+      </table>
+      

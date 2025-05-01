@@ -1,0 +1,101 @@
+.page-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding-top: 1rem;
+  }
+
+  h2, h4{
+    text-align: center;
+    background-color: rgb(37, 52, 69);
+    color: white;
+  }
+  .time{
+    text-align: center;
+  }
+
+  h1{
+    text-align: center;
+    background-color: rgb(37, 52, 69);
+    color: white;
+  }
+  
+
+  .case{
+    text-align: center;
+    font-size: 48;
+  }
+
+  .form-check-label {
+    font-size: 18px; 
+  }
+
+  .form-check-input {
+    transform: scale(1.5); /* ΜΕΓΑΛΩΝΕΙ ΤΟ RADIO BUTTON */
+    margin-right: 8px;     /* Προαιρετικά για απόσταση απ' το label */
+    color: white;
+  }
+  
+
+  .btn{
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  .button{
+    text-align: center;
+  }
+  p{
+    text-align: center;
+  }
+
+:host{
+    background-color: whitesmoke;
+}
+
+.afmowners{
+    text-align: center;
+}
+
+.form-control{
+    text-align: center;
+}
+
+.afms{
+    text-align: center;
+}
+
+.container{
+    text-align: center;
+    background-color: rgb(37, 52, 69);;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.back,
+.front {
+  flex: 1;
+  display: flex;
+}
+
+.back {
+  justify-content: flex-start;
+}
+
+.front {
+  justify-content: flex-end;
+}
+
+label{
+  color: white;
+}
+
+p{
+  color: white;
+}

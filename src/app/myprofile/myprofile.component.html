@@ -1,0 +1,104 @@
+<div class="container">
+    <h1>Το προφίλ μου</h1>
+    <div class="row">
+      <div class="col-sm">
+        <b>Όνομα Χρήστη</b>
+      </div>
+      <div class="col-sm">
+       {{credentials.name}}
+      </div>
+      <div class="col-sm">
+        <app-popup 
+        [title]="'Εισήγαγε Νέο Όνομα Χρήστη.'"
+        [request]="'http://localhost:8080/updatemyprofile/name'"
+        [jsonname]="'name'"
+        >
+    </app-popup>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm">
+          <b>Επίθετο Χρήστη</b>
+        </div>
+        <div class="col-sm">
+          {{credentials.lastname}}
+        </div>
+        <div class="col-sm">
+            <app-popup 
+            [title]="'Εισήγαγε Νέο Επίθετο Χρήστη.'"
+            [request]="'http://localhost:8080/updatemyprofile/lastname'"
+            [jsonname]="'lastname'"
+            >
+        </app-popup>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <b>Username</b>
+        </div>
+        <div class="col-sm">
+          {{credentials.username}}
+        </div>
+        <div class="col-sm">
+            <app-popup 
+        [title]="'Εισήγαγε Νέο Username'"
+        [request]="'http://localhost:8080/updatemyprofile/username'"
+        [jsonname]="'username'"
+        >
+    </app-popup>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <b>Email</b>
+        </div>
+        <div class="col-sm">
+          {{credentials.email}}
+        </div>
+        <div class="col-sm">
+            <app-popup 
+            [title]="'Εισήγαγε Νέο Email Χρήστη.'"
+            [request]="'http://localhost:8080/updatemyprofile/email'"
+            [jsonname]="'email'"
+            >
+        </app-popup>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <b>Κωδικός Πρόσβασης</b>
+        </div>
+        <div class="col-sm">
+          -----
+        </div>
+        <div class="col-sm">
+          <app-popup 
+          [title]="'Αλλαγή Κωδικού Πρόσβασης'"
+          [request]="'http://localhost:8080/updatemyprofile/changecredentials'"
+          [jsonoldPassword]="'oldPassword'"
+          [jsonnewPassword]="'newPassword'"
+          [jsonValidatePassword]="'newPasswordValidate'"
+          >
+      </app-popup>
+        </div>
+        
+      </div>
+      <br>
+     
+    
+    
+
+      
+
+
+  </div>
+
+  <br><br>
+
+
+
+

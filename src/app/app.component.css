@@ -1,0 +1,11 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* 100% ύψος οθόνης */
+  }
+  
+  router-outlet {
+    flex: 1; /* Πιάνει όλο το διαθέσιμο ύψος */
+    display: block;
+  }
+  

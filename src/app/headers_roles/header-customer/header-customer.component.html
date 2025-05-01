@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>MyParking</h1>
+    <p>Βρες τη θέση σου εύκολα και γρήγορα!</p>
+</div>
+
+<nav class="navbar navbar-expand-lg bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">Myparking</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse mx-auto p-4" >
+      <ul class="navbar-nav d-flex justify-content-center flex-grow-1">
+     
+        <li class="nav-item space" >
+          <a class="nav-link active" aria-current="page" routerLink="/booking">Κλείσε Θέση</a>
+        </li>
+      
+        
+        <li class="nav-item space">
+          <a class="nav-link active" aria-current="page" routerLink="/mybookings">Οι κρατήσεις μου</a>
+        </li>
+     </ul>
+
+      <ul class="navbar-nav ms-auto"> 
+        <li class="nav-item endspace">
+          <a class="nav-link" aria-current="page" routerLink="/myprofile"> Το προφίλ μου
+          </a>
+        </li>  
+
+
+        <li class="nav-item endspace">
+          <a class="nav-link" (click)="logout()" style="cursor: pointer;">
+            <i class="bi bi-box-arrow-right"></i> Αποσύνδεση
+        </a></li>      
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+
+
+
+
+
+ 

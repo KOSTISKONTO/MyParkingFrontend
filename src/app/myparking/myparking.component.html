@@ -1,0 +1,79 @@
+<div class="container">
+    <h1>Τα Parking μου</h1>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Α/Α</th>
+        <th scope="col">ID Parking</th>
+        <th scope="col">Ονομασία Parking</th>
+        <th scope="col">Διεύθυνση Parking</th>
+        <th scope="col">ΤΚ</th>
+        <th scope="col">ΑΦΜ</th>
+        <th scope="col">Ιδιοκτήτες</th>
+        <th scope="col">Κατάσταση Parking</th>
+        <th scope="col">Έγγραφα</th>
+        <th scope="col">Και άλλα έγγραφα</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let parking of parkings; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{parking.id}}</td>
+        <td>{{parking.nameofparking}}</td>
+        <td>{{parking.address}},  {{parking.city}}</td>
+        <td>{{parking.tk}}</td>
+        <td>{{parking.afm}}</td>
+        
+        <td>
+            <b>Username:</b>
+            <div class="users" *ngFor="let users of parking.users; let i = index">
+              {{i + 1}}: {{users.username}}
+            </div> 
+            <b>Id Ιδιοκτήτη:</b>
+            <div class="users" *ngFor="let users of parking.users; let i = index"  >
+                
+              {{i + 1}}:  {{users.userId}}
+            </div>
+        </td>
+        <td><b> {{parking.status}}</b></td>
+        <td>
+          <div *ngIf="parking.documentPaths.length === 0">
+            <b>Απαιτείται ανέβασμα εγγράφων.</b>
+            <p><b>Απαραίτητα έγγραφα:</b></p>
+            <p><b>1. Άδεια Λειτουργίας Parking</b></p>
+            <p><b>2. Ταυτότητα όλων των ιδιοκτητών</b></p>
+            <p><b>3. Καταστατικό Λειτουργίας</b></p>
+          </div>
+          
+          <div *ngIf="parking.documentPaths.length !== 0">
+            <div *ngFor="let file of parking.documentPaths">
+              <a (click)="getfiles(file)" target="_blank">
+                {{ file.fileName || file.split('_').slice(1).join('_') }} <br><br>
+              </a>
+            </div>
+          </div>
+          
+        </td>
+        
+      
+      <td>
+        <div class="upload-form">
+          <h3>Ανέβασε έγγραφα ή εικόνες για το parking</h3>
+        
+          <input type="file" (change)="onFileSelected($event)" multiple>
+          
+          <button (click)="uploadFiles(parking.id)">Upload</button>
+        
+          <div *ngIf="uploadSuccess" style="color: green;">✅ Επιτυχής αποστολή!</div>
+          <div *ngIf="uploadError" style="color: red;">❌ Σφάλμα κατά την αποστολή!</div>
+        </div>
+        
+      </td>
+        
+        
+      </tr>
+      </tbody>
+      </table>
+      

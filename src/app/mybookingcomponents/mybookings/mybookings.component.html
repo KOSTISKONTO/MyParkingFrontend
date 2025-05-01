@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Οι Κρατήσεις μου</h1>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Α/Α</th>
+        <th scope="col">Ονομασία Parking</th>
+        <th scope="col">Διεύθυνση Parking</th>
+        <th scope="col">Ημερομηνία που έγινε η κράτηση</th>
+        <th scope="col">Ημερομηνία Κράτησης</th>
+        <th scope="col">Ώρα Κράτησης</th>
+        <th scope="col">Ώρες Κράτησης</th>
+        <th scope="col">Συνολικό Κόστος</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of booking; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{book.parking.name_of_parking}}</td>
+        <td>{{book.parking.address}}, {{book.parking.City}}</td>
+        <td>{{book.booking_making_date}}</td>
+        <td>{{book.booking_date}}</td>
+        <td>{{book.time_date}}</td>
+        <td> {{book.hours_of_booking}}</td>
+        <td>{{book.cost}} ευρώ</td>
+      </tr>
+      </tbody>
+      </table>
+      

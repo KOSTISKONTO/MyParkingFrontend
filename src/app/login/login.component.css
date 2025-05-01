@@ -1,0 +1,48 @@
+/* Κεντράρισμα όλης της φόρμας */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  h2{
+    text-align: center;
+  }
+  
+  /* Προαιρετικό styling για τη φόρμα */
+  form {
+    width: 100%;
+    max-width: 800px; /* Όριο πλάτους για πιο ωραία εμφάνιση */
+    padding: 20px;
+    background-color: #f8f9fa; /* Απαλό γκρι */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+  }
+  
+  /* Στοίχιση του κειμένου μέσα στα inputs */
+  .form-control {
+    text-align: center;
+    
+   
+  }
+
+  .register{
+    align-items: center;
+    text-align: center;
+    background-color: #f8f9fa; /* Απαλό γκρι */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    justify-content: center;
+    max-width: 800px;
+
+    
+  }
+  
+  .nav-link{
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    color: blue;
+  }

@@ -1,0 +1,160 @@
+/*
+.epilexe{
+    text-align: center;
+}
+
+.row{
+    text-align: center;
+}
+
+.results{
+    text-align: center;
+}
+
+.d-block{
+    text-align: center;
+}
+
+.booking-results{
+    text-align: center;
+    border: solid;
+
+}
+
+.columns{
+    border: solid;
+    background-color: aqua;
+    color: rgb(39, 41, 43);
+}
+
+.calendar {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .month {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .month button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .weekdays, .days {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  
+  .weekdays li, .days li {
+    width: calc(100% / 7);
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .days li {
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .days li:hover {
+    background: #007bff;
+    color: white;
+  }
+  
+  .selected-date {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+*/
+
+.col-sm{
+  padding: 70px;
+  border: solid;
+  border-color:white;
+  background-color:color;
+  text-align: center;
+  
+}
+
+
+.button-available{
+  text-align: center;
+  padding: 10px;
+  background-color: grey;
+  width: 300px;
+}
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.input{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.number-input {
+  text-align: center; /* Κεντράρει τον αριθμό μέσα στο input */
+  width: 100px;       /* Μπορείς να το μεγαλώσεις αν θες */
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu {
+    min-width: 600px;
+    padding: 1rem;
+  }
+
+  .city-column {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .city-column li {
+    padding: 5px 0;
+  }
+
+  h1, h5{
+      text-align: center;
+  }
+
+  .dropdown-toggle{
+    text-align: center;
+    padding: 10px;
+    background-color: grey;
+    width: 300px;
+  }
+
+
+  

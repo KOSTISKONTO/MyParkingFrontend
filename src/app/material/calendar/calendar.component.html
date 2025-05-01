@@ -1,0 +1,14 @@
+<mat-form-field appearance="fill">
+  <div class="label-wrapper">
+    <mat-label>Επέλεξε ημερομηνία</mat-label>
+  </div>
+  <input class="input"
+    matInput
+    [matDatepicker]="picker"
+    [min]="today"
+    [(ngModel)]="selectedDate"
+  />
+  
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>

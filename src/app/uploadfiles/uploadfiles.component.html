@@ -1,0 +1,11 @@
+<div class="upload-form">
+    <h3>Ανέβασε έγγραφα ή εικόνες για το parking</h3>
+  
+    <input type="file" (change)="onFileSelected($event)" multiple>
+    
+    <button (click)="uploadFiles()">Upload</button>
+  
+    <div *ngIf="uploadSuccess" style="color: green;">✅ Επιτυχής αποστολή!</div>
+    <div *ngIf="uploadError" style="color: red;">❌ Σφάλμα κατά την αποστολή!</div>
+  </div>
+  

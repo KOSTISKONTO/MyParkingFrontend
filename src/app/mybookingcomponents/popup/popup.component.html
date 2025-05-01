@@ -1,0 +1,32 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{title}}</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+  
+    <div class="modal-body">
+      <div *ngIf="jsonoldPassword==null">
+        <input type="text" class="form-control" [(ngModel)]="update">
+        <button type="button" class="btn btn-outline-primary" (click)="setupdate(modal)">Ολοκληρωση</button>
+      </div>
+      <div *ngIf="jsonoldPassword!=null">
+        <label>Παλιός Κωδικός</label>
+        <input type="text" class="form-control" [(ngModel)]="oldPassword">
+        <label>Νέος Κωδικός</label>
+        <input type="text" class="form-control" [(ngModel)]="newPassword">
+        <label>Επιβεβαίωση Κωδικού</label>
+        <input type="text" class="form-control" [(ngModel)]="validatepassword">
+
+        <button type="button" class="btn btn-outline-primary" (click)="setupdate(modal)">Ολοκληρωση</button>
+      </div>
+      
+    </div>
+  
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.close()">Άκυρο</button>
+    </div>
+  </ng-template>
+  
+  <!-- Launch button -->
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Επεξεργασία</button>
+  

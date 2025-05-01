@@ -1,0 +1,13 @@
+.label-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+ .time{
+    display: flex;
+    justify-content: center;
+ }
+
+ h5{
+    text-align: center;
+ }

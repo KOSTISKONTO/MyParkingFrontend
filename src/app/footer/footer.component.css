@@ -1,0 +1,29 @@
+.footer{
+    width: 100%;
+    border: solid;
+    border-color:red;
+    background-color: black;
+    position: relative !important;
+}
+
+p, h1{
+    color: white;
+    text-align: center;
+}
+
+.col-xl-4{
+    border: solid;
+    border-color:green;
+}
+
+.row{
+    border: solid;
+    border-color:blue;
+   
+}
+
+.container{
+    border: solid;
+    border-color: cadetblue;
+    width: 100 !important;
+}

@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Εγγεγραμένοι Χρήστες - Πελάτες Εφαρμογής</h1>
+    <h3>Σύνολο: </h3>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Α/Α</th>
+        <th scope="col">ID Ιδιοκτήτη</th>
+        <th scope="col">Όνομα</th>
+        <th scope="col">Επώνυμο</th>
+        <th scope="col">email</th>
+        <th scope="col">Username</th>
+        <th scope="col">ΑΦΜ</th>
+        <th scope="col">Ταυτότητα</th>
+        <th scope="col">Ονόμα / Ονόματα Parking</th>
+        <th scope="col">Id Parking/Parkings</th>
+
+    
+        
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let owner of owners; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{owner.id}}</td>
+        <td>{{owner.name}}</td>
+        <td>{{owner.lastname}}</td>
+        <td>{{owner.email}}</td>
+        <td>{{owner.username}}</td>
+        <td>{{owner.afmOwner}}</td>
+        <td>{{owner.identityOwner}}</td>
+        <td>
+          <div *ngFor="let name of owner.namesOfParking; let i=index">
+            <h5>{{i+1}}:   {{name}}</h5>
+          </div>
+           
+        </td >
+        <td >
+          <div *ngFor="let id of owner.idParkings; let i=index">
+            <h5>{{i+1}}:       {{id}}</h5>
+          </div>
+          
+      </td>
+      </tr>
+      </tbody>
+      </table>
+      
