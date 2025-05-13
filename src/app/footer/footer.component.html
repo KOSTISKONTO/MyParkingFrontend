@@ -1,39 +1,52 @@
-
+<!-- 
+ 
+-->
 <div class="footer">
-    <div class="container">
-        <div class="row">
+    <div class="container foot">
+        <div class="row general">
           <div class="col-xl-4">
             <H1>ΚΛΕΙΣΕ ΘΕΣΗ</H1>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
+            <div class="container" *ngFor="let city of cityList">
+               <div class="row">
+                <div class="col-sm">
+              <a class="city" role="button" (click)="bookingpage(city.namecity)">{{city.namecity}}</a>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-xl-4">
             <H1>ΚΑΤΑΧΩΡΗΣΕ ΤΗΝ ΕΠΙΧΕΙΡΗΣΗ ΣΟΥ</H1>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                  <a routerLink="/registerowner">Κάνε Εγγραφή ως νέος Ιδιοκτήτης</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                    <a routerLink="/login">Σύνδεση</a>
+                  </div>
+                </div>
+              <div class="row">
+                <div class="col-sm">
+                    <a routerLink="/newParking">Νέο Πάρκινγκ</a>
+                  </div>
+                </div>        
+              </div>
           </div>
           <div class="col-xl-4">
             <H1>ΟΡΟΙ ΧΡΗΣΗΣ</H1>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
-            <p>jnkjndkjnkjdn</p>
-            <p>kmklmlkmklmkm</p>
+                <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                    <a routerLink="/newParking">Όροι Χρήσης για πελάτες</a>
+                </div>
+              </div>  
+               <div class="row">
+                <div class="col-sm">
+                    <a routerLink="/newParking">Όροι Χρήσης για ιδιοκτήτες</a>
+                </div>
+              </div> 
           </div>
          
       </div>

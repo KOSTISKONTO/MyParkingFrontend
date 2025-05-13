@@ -1,1 +1,75 @@
+<div class="container first">
+    <h1>Επίλεξε Ημέρα, Ώρα και Πόλη που επιθυμείς</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <h5>Ημερομηνία Κράτησης</h5>
+         <app-calendar></app-calendar>
+        </div>
+        <div class="col-sm">
+          <h5>Ώρα Κράτησης</h5>
+        <app-timepicker></app-timepicker>
+        </div>
+ 
+
+        <div class="col-sm">
+          <h5>Ώρες Κράτησης</h5>
+          <div class="input">
+            <input type="number" [(ngModel)]="hoursbooking"  min="1" class="number-input" />
+          </div>
+         
+        </div>
+
+       
+      </div>
+    </div>
+    <div class="button-wrapper">
+        <button class="button-available" type="button" (click)="availabilityy()">Δες Parking</button>
+      </div>
+    
+  </div>
+
+ 
+
+  <div class="container">
+    <div class="row">
+      <div  class="col-sm" *ngFor="let parking of parkingList">
+        <h2>{{ parking.nameofParking }}</h2>
+        <h4>Συνολικό Κόστος: {{parking.cost}} ευρώ</h4>
+        <h4>Διεύθυνση: {{parking.address}}</h4>
+        <div *ngIf="parking.isopen">
+          <h4>Ανοιχτό</h4>
+        </div>
+        <div *ngIf="!parking.isopen">
+          <h4>Κλειστό</h4>
+        </div>
+        <div *ngIf="!parking.available">
+          <h4>Γεμάτο</h4>
+        </div>
+        
+        <h4>Απόσταση: {{parking.duration}}</h4>
+        <h5>Διάρκεια με τα πόδια: {{parking.distance}}</h5>
+        <div *ngIf="!parking.isopen">
+          <button type="button" disabled  (click)="book(parking.Idparking, parking.cost)">Το κλείνω</button>
+        </div>
+        <div *ngIf="parking.isopen">
+           <button type="button" (click)="book(parking.Idparking, parking.cost)">Το κλείνω</button>
+        </div>
+        <button type="button" (click)="focusParking(parking)">Δες στον χάρτη</button>
+
+      </div>
+  </div>
+
+  <div>
+     <app-map></app-map>
+  </div>
+ 
+</div>
+
+
+  
+
+
+
+ 
 

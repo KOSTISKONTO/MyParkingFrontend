@@ -35,3 +35,15 @@ a:hover {
   text-decoration: underline;
   color: black; /* αν θες να παραμένει ίδιο χρώμα στο hover */
 }
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}

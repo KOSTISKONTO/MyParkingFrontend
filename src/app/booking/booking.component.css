@@ -1,95 +1,15 @@
-/*
-.epilexe{
-    text-align: center;
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 70vh;
 }
 
-.row{
-    text-align: center;
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.results{
-    text-align: center;
-}
-
-.d-block{
-    text-align: center;
-}
-
-.booking-results{
-    text-align: center;
-    border: solid;
-
-}
-
-.columns{
-    border: solid;
-    background-color: aqua;
-    color: rgb(39, 41, 43);
-}
-
-.calendar {
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .month {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    border-radius: 5px;
-  }
-  
-  .month button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .weekdays, .days {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-  }
-  
-  .weekdays li, .days li {
-    width: calc(100% / 7);
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  
-  .days li {
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .days li:hover {
-    background: #007bff;
-    color: white;
-  }
-  
-  .selected-date {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-*/
 
 .col-sm{
   padding: 70px;

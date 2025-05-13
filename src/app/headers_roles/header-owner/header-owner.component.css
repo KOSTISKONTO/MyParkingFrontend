@@ -9,9 +9,7 @@
     border-radius: 10px;
 }
 
-.container{
-    border-style: solid;
-    border-color: red;
+.container{ 
     text-align: center;
     width: 100%;
 
