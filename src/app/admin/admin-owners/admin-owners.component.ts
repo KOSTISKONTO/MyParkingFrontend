@@ -12,7 +12,7 @@ export class AdminOwnersComponent implements OnInit{
   }
 
   owners!:any;
-
+  size_owners = 0
   ngOnInit(): void {
       this.getOwners();
   }
@@ -24,6 +24,7 @@ export class AdminOwnersComponent implements OnInit{
       response => {
         console.log(response);
         this.owners=response;
+        this.size_owners = this.owners.length;
       },
       error => {
         console.error('Σφάλμα κατά την αποστολή:', error);

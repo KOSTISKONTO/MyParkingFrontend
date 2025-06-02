@@ -10,6 +10,13 @@ export const roleGuard: CanActivateFn = (route, state) => {
   const alloedroles = route.data['roles'] as string[];
   const roleuser = Auht.getRole();
 
+   const targetUrl = state.url;
+   if(targetUrl === '/newParking'){
+    if(!isLog && !roleuser){
+      router.navigate(['/login']);
+    }
+   }
+   
   if (!isLog && !roleuser) {
     // Επέτρεψε είσοδο στους μη συνδεδεμένους
     return true;

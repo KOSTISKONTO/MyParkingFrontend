@@ -39,7 +39,6 @@ export class BookingbyAddressSearchComponent implements OnInit{
           next:(res:any)=>{
             console.log(res[0].City);
             this.distances=res;
-           
             this.responcee=res;
             console.log(this.responcee);
           }
@@ -175,6 +174,15 @@ availabilityy() {
     .subscribe(
       response => {
         this.parkingList = response;
+        this.parkingList.forEach(p => {
+            const extra = this.distances.find(e => e.Address === p.address);
+            if (extra) {
+              p.duration = extra.Duration;
+              p.distance = extra.Distance;
+              p.name = extra.Name;
+              p.city = extra.City;
+            }
+          });
 
         // Φτιάχνουμε array με όλα τα requests για τις συντεταγμένες
         const coordsRequests = this.parkingList.map(p => {
@@ -209,6 +217,10 @@ availabilityy() {
         alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
       }
     );
+
+
 }
+
+
 
 }

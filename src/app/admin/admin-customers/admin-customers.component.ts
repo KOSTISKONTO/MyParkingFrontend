@@ -11,6 +11,7 @@ export class AdminCustomersComponent implements OnInit{
   }
 
   customers!:any;
+  size_customers = 0
 
   ngOnInit(): void {
       this.getCustomers();
@@ -22,6 +23,8 @@ export class AdminCustomersComponent implements OnInit{
       response => {
         console.log(response);
         this.customers=response;
+        console.log(this.customers.length);
+        this.size_customers=this.customers.length;
       },
       error => {
         console.error('Σφάλμα κατά την αποστολή:', error);

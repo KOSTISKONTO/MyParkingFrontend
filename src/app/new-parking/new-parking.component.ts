@@ -244,7 +244,7 @@ export class NewParkingComponent {
       this.http.post<any>('http://localhost:8080/parking/newParking', finalyform).subscribe(
         (response) => {
           console.log(response);
-          alert('Η καταχώρηση έγινε με επιτυχία! Μεταβείτε στο Parking σας, ( ' + 'http://localhost:4200/myparking' + ' )' + 'για να ανεβάσετε τα απαιτούμενα έγγραφα, ώστε να πραγματοποιηθεί ο σχετικός έλεγχος και να καταω=χωρηθεί ολοκληρωτικά η επιχείρησή σας.');
+          alert('Η καταχώρηση έγινε με επιτυχία! Μεταβείτε στο Parking σας, ( ' + 'http://localhost:4200/myparking' + ' )' + 'για να ανεβάσετε τα απαιτούμενα έγγραφα, ώστε να πραγματοποιηθεί ο σχετικός έλεγχος και να καταχωρηθεί ολοκληρωτικά η επιχείρησή σας.');
         },
         (error) => {
           console.error(error);
