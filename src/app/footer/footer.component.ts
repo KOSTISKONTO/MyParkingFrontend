@@ -36,7 +36,7 @@ export class FooterComponent {
 
   this.sub = this.websocketService.cities$.subscribe((data) => {
     this.cityList = data;
-    console.log(data);
+   
   });
 
 }

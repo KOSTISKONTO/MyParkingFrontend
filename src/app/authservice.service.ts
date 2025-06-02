@@ -52,7 +52,7 @@ export class AuthserviceService {
     this.http.post<any>(this.login_url, credentials, { headers })
       .subscribe({
         next: (response) => {
-          console.log(response);
+       
           const token = response.token;
           const roles = response.roles;
 
@@ -67,7 +67,7 @@ export class AuthserviceService {
           });
         },
         error: (error) => {
-          console.error('Σφάλμα κατά το login:', error);
+        
           alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
         }
       });
@@ -99,12 +99,12 @@ export class AuthserviceService {
     this.http.post<any>(this.registercustomer_url, registerForm, { headers })
       .subscribe({
         next: (response) => {
-          console.log(response);
+          
           alert(response.message || 'Επιτυχής εγγραφή!');
           this.router.navigate(['/login']);
         },
         error: (error) => {
-          console.error('Σφάλμα κατά την αποστολή:', error);
+         
           alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
         }
       });
@@ -132,12 +132,12 @@ export class AuthserviceService {
     this.http.post<any>(this.registerowner_url, registerForm, { headers })
       .subscribe({
         next: (response) => {
-          console.log(response);
+          
           alert(response.message || 'Επιτυχής εγγραφή!');
           this.router.navigate(['/login']);
         },
         error: (error) => {
-          console.error('Σφάλμα κατά την αποστολή:', error);
+          
           alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
         }
       });

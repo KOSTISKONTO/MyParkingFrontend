@@ -61,12 +61,12 @@ availabilityForm!:FormGroup
   getDate(){
       this.calendarComponent.selectedDate;
       this.datebooking = this.calendarComponent.formatDate(this.calendarComponent.selectedDate)
-      console.log(this.datebooking);
+     
   }
 
   getTime(){
     this.timebooking = this.timepicker.selectedTime;
-    //console.log(this.timebooking);
+    
     return this.timebooking;
   }
 
@@ -77,7 +77,7 @@ availabilityForm!:FormGroup
 
   this.route.queryParams.subscribe(params => {
     const namecity = params['namecity'];
-    console.log('Name:', namecity);
+  
     if(params['namecity']){ 
       this.setActiveCity(namecity)
 
@@ -92,7 +92,7 @@ availabilityForm!:FormGroup
 
   this.sub = this.websocketService.cities$.subscribe((data) => {
     this.cityList = data;
-    console.log(data);
+
   });
 
 }
@@ -100,7 +100,7 @@ availabilityForm!:FormGroup
 setActiveCity(name:string){
   this.activeCity=name;
   this.activeCityboolean=true;
-  console.log(this.getTime(), this.activeCity,  this.hoursbooking);
+  
 }
 
 availabilityy() {
@@ -124,11 +124,11 @@ availabilityy() {
         // Φτιάχνουμε array με όλα τα requests για τις συντεταγμένες
         const coordsRequests = this.parkingList.map(p => {
           const finalAddress = p.address + ', ' + this.activeCity + ', ' + 'Ελλάδα';
-          console.log(finalAddress);
+         
           const params = new HttpParams().set('address', finalAddress);
           return this.http.get<any>('http://localhost:8080/booking/coordinates', { params }).toPromise();
         });
-        console.log(coordsRequests);
+        
         // Εκτελούμε όλα τα requests ταυτόχρονα
         Promise.all(coordsRequests).then(coordsArray => {
         
@@ -136,7 +136,7 @@ availabilityy() {
             this.parkingList[i].lat = coordsArray[i].lat;
             this.parkingList[i].lng = coordsArray[i].lng;
           }
-         console.log(this.parkingList);
+         
 
           // Περνάμε τα πάρκινγκ με τα lat/lng στον χάρτη
           this.map.setMarkers(this.parkingList);
@@ -147,11 +147,11 @@ availabilityy() {
           }
         });
 
-        console.log(response);
+        
         
       },
       error => {
-        console.error('Σφάλμα κατά την αποστολή:', error);
+        
         alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
       }
     );
@@ -168,7 +168,7 @@ focusParking(parking: any) {
 
 
 book(idParking:any, cost:number){
-  console.log(idParking, cost);
+  
   this.router.navigate([
     '/finalbooking',
     idParking,

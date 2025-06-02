@@ -32,15 +32,15 @@ export class BookingbyAddressSearchComponent implements OnInit{
      
        this.route.params.subscribe(params => {
         this.adress=params['address'];
-        console.log(this.adress);
+      
         this.http.get<any>('http://localhost:8080/booking/todo', {
           params: {address: this.adress}
         }).subscribe({
           next:(res:any)=>{
-            console.log(res[0].City);
+          
             this.distances=res;
             this.responcee=res;
-            console.log(this.responcee);
+           
           }
         })
   });
@@ -62,7 +62,7 @@ export class BookingbyAddressSearchComponent implements OnInit{
 
 
   fetchAvailability(responcee: any): void {
-    console.log(responcee);
+    
     const now = new Date();
     const dateStr = now.toLocaleDateString('el-GR');
     const params = new HttpParams()
@@ -70,7 +70,7 @@ export class BookingbyAddressSearchComponent implements OnInit{
       .set('date', this.datebooking)
       .set('time', this.timebooking)
       .set('hours', this.hoursbooking);
-      console.log(dateStr);
+  
   
     this.http.get<any>('http://localhost:8080/booking/availability', { params })
       .subscribe(
@@ -85,16 +85,16 @@ export class BookingbyAddressSearchComponent implements OnInit{
               p.city = extra.City;
             }
           });
-          console.log(response);
+          
   
           // Φτιάχνουμε array με όλα τα requests για τις συντεταγμένες
           const coordsRequests = this.parkingList.map(p => {
             const finalAddress = p.address + ', ' + responcee[0].City + ', ' + 'Ελλάδα';
-            console.log(finalAddress);
+           
             const params = new HttpParams().set('address', finalAddress);
             return this.http.get<any>('http://localhost:8080/booking/coordinates', { params }).toPromise();
           });
-          console.log(coordsRequests);
+         
           // Εκτελούμε όλα τα requests ταυτόχρονα
           Promise.all(coordsRequests).then(coordsArray => {
           
@@ -102,7 +102,7 @@ export class BookingbyAddressSearchComponent implements OnInit{
               this.parkingList[i].lat = coordsArray[i].lat;
               this.parkingList[i].lng = coordsArray[i].lng;
             }
-           console.log(this.parkingList);
+           
   
             // Περνάμε τα πάρκινγκ με τα lat/lng στον χάρτη
             this.map.setMarkers(this.parkingList);
@@ -113,11 +113,11 @@ export class BookingbyAddressSearchComponent implements OnInit{
             }
           });
   
-          console.log(response);
+       
        
         },
         error => {
-          console.error('Σφάλμα κατά την αποστολή:', error);
+         
           alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
         }
       );
@@ -127,18 +127,18 @@ export class BookingbyAddressSearchComponent implements OnInit{
 getDate(){
   this.calendarComponent.selectedDate;
   this.datebooking = this.calendarComponent.formatDate(this.calendarComponent.selectedDate)
-  console.log(this.datebooking);
+  
 }
 
 getTime(){
 this.timebooking = this.timepicker.selectedTime;
-//console.log(this.timebooking);
+
 return this.timebooking;
 }
 
 
 book(idParking:any, cost:number){
-  console.log(idParking, cost);
+  
   this.router.navigate([
     '/finalbooking',
     idParking,
@@ -187,11 +187,11 @@ availabilityy() {
         // Φτιάχνουμε array με όλα τα requests για τις συντεταγμένες
         const coordsRequests = this.parkingList.map(p => {
           const finalAddress = p.address + ', ' + this.responcee[0].City + ', ' + 'Ελλάδα';
-          console.log(finalAddress);
+          
           const params = new HttpParams().set('address', finalAddress);
           return this.http.get<any>('http://localhost:8080/booking/coordinates', { params }).toPromise();
         });
-        console.log(coordsRequests);
+        
         // Εκτελούμε όλα τα requests ταυτόχρονα
         Promise.all(coordsRequests).then(coordsArray => {
         
@@ -199,7 +199,7 @@ availabilityy() {
             this.parkingList[i].lat = coordsArray[i].lat;
             this.parkingList[i].lng = coordsArray[i].lng;
           }
-         console.log(this.parkingList);
+         
 
           // Περνάμε τα πάρκινγκ με τα lat/lng στον χάρτη
           this.map.setMarkers(this.parkingList);
@@ -213,7 +213,7 @@ availabilityy() {
       
       },
       error => {
-        console.error('Σφάλμα κατά την αποστολή:', error);
+   
         alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
       }
     );

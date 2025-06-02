@@ -146,7 +146,7 @@ export class NewParkingComponent {
   }
   addstep3() {
 
-    console.log(this.indepolicy + "  "  + this.PolicyForm.get(this.policy+'Daily')?.value );
+    
     
     if (
       (this.indepolicy===0 && this.PolicyForm.get('FlatCostDaily')?.invalid)  ||
@@ -161,13 +161,13 @@ export class NewParkingComponent {
        return;
      }
      this.step+=1;
-     console.log(this.getindexpolweek());
+     
    
   }
 
   addstep4() {
 
-    console.log(this.indepolicy + "  "  + this.PolicyForm.get(this.policy+'Daily')?.value );
+   
     if (
       (this.indexpolicyweek===0 && this.PolicyForm.get('FlatCostWeekend')?.invalid)  ||
       (this.indexpolicyweek===1 && this.PolicyForm.get('CostByHourWeekend')?.invalid)  ||
@@ -180,8 +180,7 @@ export class NewParkingComponent {
        this.PolicyForm.markAllAsTouched();
        return;
      }
-     this.step+=1;
-     console.log(this.getindexpolweek());
+    
    
   }
 
@@ -194,7 +193,7 @@ export class NewParkingComponent {
   setindexpolicyweek(indexweek: number, policyweek: string) { this.indexpolicyweek = indexweek; this.policyweek = policyweek; }
 
   onSubmit() {
-    console.log("Submit started");
+    
   
     const selectedDailyPolicy = this.policy;
     const selectedWeekendPolicy = this.policyweek;
@@ -240,20 +239,20 @@ export class NewParkingComponent {
         "AfmOwners": this.parkingForm.get('afmowners')?.value
       };
   
-      console.log("FINAL FORM:", finalyform);
+      
       this.http.post<any>('http://localhost:8080/parking/newParking', finalyform).subscribe(
         (response) => {
-          console.log(response);
+         
           alert('Η καταχώρηση έγινε με επιτυχία! Μεταβείτε στο Parking σας, ( ' + 'http://localhost:4200/myparking' + ' )' + 'για να ανεβάσετε τα απαιτούμενα έγγραφα, ώστε να πραγματοποιηθεί ο σχετικός έλεγχος και να καταχωρηθεί ολοκληρωτικά η επιχείρησή σας.');
         },
         (error) => {
-          console.error(error);
+         
           alert('Κάτι πήγε στραβά!');
         }
       );
       this.router.navigate(['']);
     } else {
-      console.warn('Form is invalid');
+      
       this.parkingForm.markAllAsTouched();
       this.PolicyForm.markAllAsTouched();
     }

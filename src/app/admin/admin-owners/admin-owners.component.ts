@@ -22,12 +22,10 @@ export class AdminOwnersComponent implements OnInit{
     this.http.get<any>('http://localhost:8080/getOwners')
     .subscribe(
       response => {
-        console.log(response);
         this.owners=response;
         this.size_owners = this.owners.length;
       },
       error => {
-        console.error('Σφάλμα κατά την αποστολή:', error);
         alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
       }
     );

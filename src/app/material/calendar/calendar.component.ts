@@ -10,7 +10,6 @@ export class CalendarComponent {
   today: Date = new Date(); // ⏰ σήμερα
   selectedDate: Date = new Date();
   submit() {
-    console.log('📅 Επιλεγμένη ημερομηνία:', this.selectedDate);
   }
       // ✨ επιλεγμένη ημερομηνία
 

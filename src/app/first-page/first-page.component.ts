@@ -38,7 +38,7 @@ export class FirstPageComponent implements OnInit{
   
     this.sub = this.websocketService.cities$.subscribe((data) => {
       this.popularcityList = data;
-      console.log(data);
+   
     });
   }
 

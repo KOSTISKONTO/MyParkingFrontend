@@ -32,15 +32,12 @@ export class PopupComponent implements OnInit{
   }
 
   ngOnInit(): void {
-	 console.log(this.jsonname);
-   console.log(this.jsonoldPassword)
-   console.log(this.jsonnewPassword)
+
   }
 
   setupdate(modal:any){
     let finalrequest;
-    console.log(this.update);
-    console.log(this.jsonname);
+  
     if(this.jsonoldPassword==null){
        finalrequest={
         [this.jsonname]:this.update
@@ -54,7 +51,7 @@ export class PopupComponent implements OnInit{
       }
     }
   
-    console.log(finalrequest);
+    
     this.http.post<any>(this.request,  finalrequest)
     .subscribe(
       response => {
@@ -63,7 +60,7 @@ export class PopupComponent implements OnInit{
           modal.close();
         }
         else{
-          console.log(response);
+          
           this.myprofile.ngOnInit();
           modal.close();
         }
@@ -72,7 +69,7 @@ export class PopupComponent implements OnInit{
         
       },
       error => {
-        console.error('Σφάλμα κατά την αποστολή:', error);
+        
         alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
         modal.close();
       }

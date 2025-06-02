@@ -31,13 +31,10 @@ export class AdminPopupRejectComponent {
   }
 
   ngOnInit(): void {
-	console.log(this.Id)
-  console.log(this.status);
   }
 
   setupdate(modal: any) {
-    console.log(this.Id);
-    console.log(this.status);
+
   
     const params = new HttpParams()
       .set('Id', this.Id)
@@ -46,12 +43,10 @@ export class AdminPopupRejectComponent {
     this.http.post<any>('http://localhost:8080/parking/reject_parking_admin', null, { params })
       .subscribe(
         response => {
-          console.log(response);
           alert(response.message); // Πρόσεχε: το response είναι αντικείμενο, έχει .message
           modal.close();
         },
         error => {
-          console.error('Σφάλμα κατά την αποστολή:', error);
           alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
           modal.close();
         }

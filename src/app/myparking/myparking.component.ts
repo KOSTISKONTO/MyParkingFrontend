@@ -24,14 +24,14 @@ export class MyparkingComponent implements OnInit{
     .subscribe(
       response => {
        this.parkings=response;
-       console.log(this.parkings)
+      
       
 
        
         
       },
       error => {
-        console.error('Σφάλμα κατά την αποστολή:', error);
+        
         alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
       }
     );
@@ -47,7 +47,7 @@ export class MyparkingComponent implements OnInit{
   }
 
   uploadFiles(parking_id:any) {
-    console.log(this.parkingId);
+    
     if (!parking_id || this.selectedFiles.length === 0) {
       alert("Επίλεξε αρχεία και βάλε σωστό ID.");
       return;
@@ -62,12 +62,12 @@ export class MyparkingComponent implements OnInit{
 
     this.http.post('http://localhost:8080/parking/upload-files', formData).subscribe({
       next: (responce) => {
-        console.log(responce);
+        
         this.uploadSuccess = true;
         this.uploadError = false;
       },
       error: (responce) => {
-        console.log(responce);
+        
         this.uploadError = true;
         this.uploadSuccess = false;
       }
@@ -121,7 +121,7 @@ export class MyparkingComponent implements OnInit{
         URL.revokeObjectURL(downloadUrl);
       },
       error: (error) => {
-        console.error('Σφάλμα στο κατέβασμα αρχείου:', error);
+     
         alert('Σφάλμα κατά την προσπάθεια λήψης αρχείου.');
       }
     });

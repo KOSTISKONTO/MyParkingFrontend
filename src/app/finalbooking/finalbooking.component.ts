@@ -102,17 +102,16 @@ hours!:any;
           }
         }
     }
-    console.log(finalform);
+ 
     
     this.http.post<any>('http://localhost:8080/booking/newBooking', finalform, {headers, withCredentials:false})
     .subscribe(
       response => {
-        console.log(response);
         alert(response);
         this.routere.navigate(['']);
       },
       error => {
-        console.error('Σφάλμα κατά την αποστολή:', error);
+      
         alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
       }
     );

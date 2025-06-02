@@ -25,7 +25,7 @@ export class WebsocketService {
       webSocketFactory: () => new WebSocket('ws://localhost:8080/websocket'),
       reconnectDelay: 5000, // auto-reconnect
       onConnect: () => {
-        console.log('✅ Connected to WebSocket');
+       
 
         this.subscription = this.stompClient.subscribe('/topic/cities', (message: IMessage) => {
           const data = JSON.parse(message.body);
@@ -38,10 +38,10 @@ export class WebsocketService {
 
       },
       onStompError: (frame) => {
-        console.error('Broker error', frame.headers['message'], frame.body);
+       
       },
       onWebSocketError: (event: Event) => {
-        console.error('WebSocket error', event);
+       
       }
     });
 
@@ -52,7 +52,6 @@ export class WebsocketService {
     if (this.stompClient && this.stompClient.active) {
       this.subscription?.unsubscribe();
       this.stompClient.deactivate();
-      console.log('🔌 Disconnected from WebSocket');
     }
   }
 

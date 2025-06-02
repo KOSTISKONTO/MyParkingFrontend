@@ -15,7 +15,7 @@ export class TestserviceService implements HttpInterceptor {
           Authorization: `Bearer ${jwt}`
         }
       });
-      console.log('Cloned Request:', cloned);
+    
       return next.handle(cloned);
     }
 

@@ -33,13 +33,12 @@ export class AutocompleteComponent implements OnInit {
       )
       .subscribe({
         next: (res: any) => {
-          console.log('✅ google api:', res.Description,  'cities: ', res.Cities, 'neighboor: ', res.Neighborhood);
           this.suggestions = res.Description;
           this.cities = res.Cities;
           this.neighbor=res.Neighborhood;
         },
         error: (err) => {
-          console.error('❌ Error fetching Google results', err);
+          
         }
       });
   }

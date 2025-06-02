@@ -20,11 +20,11 @@ ngOnInit(): void {
   .subscribe(
     response => {
      this.booking=response;
-     console.log(this.booking)
+
       
     },
     error => {
-      console.error('Σφάλμα κατά την αποστολή:', error);
+   
       alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
     }
   );

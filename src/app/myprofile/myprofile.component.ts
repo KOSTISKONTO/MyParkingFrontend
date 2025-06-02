@@ -20,11 +20,11 @@ export class MyprofileComponent implements OnInit{
     .subscribe(
       response => {
         this.credentials=response;
-        //console.log(this.credentials);
+        
         
       },
       error => {
-        console.error('Σφάλμα κατά την αποστολή:', error);
+        
         alert('Κάτι πήγε στραβά. Προσπαθήστε ξανά.');
       }
     );
