@@ -177,10 +177,12 @@ export class NewParkingComponent {
       (this.indexpolicyweek===5 && this.PolicyForm.get('ByLocalTimeCustoWeekend')?.invalid)||
       (this.PolicyForm.get('samedaily')?.invalid)
      ) {
+
+      console.log("kkkk")
        this.PolicyForm.markAllAsTouched();
        return;
      }
-    
+      this.step+=1;
    
   }
 

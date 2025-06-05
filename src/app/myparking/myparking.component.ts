@@ -62,12 +62,12 @@ export class MyparkingComponent implements OnInit{
 
     this.http.post('http://localhost:8080/parking/upload-files', formData).subscribe({
       next: (responce) => {
-        
+        console.log(responce);
         this.uploadSuccess = true;
         this.uploadError = false;
       },
       error: (responce) => {
-        
+        console.log(responce);
         this.uploadError = true;
         this.uploadSuccess = false;
       }
