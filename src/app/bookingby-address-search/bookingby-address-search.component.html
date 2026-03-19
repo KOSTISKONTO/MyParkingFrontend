@@ -47,8 +47,8 @@
           <h4>Γεμάτο</h4>
         </div>
         
-        <h4>Απόσταση: {{parking.duration}}</h4>
-        <h5>Διάρκεια με τα πόδια: {{parking.distance}}</h5>
+        <h4>Διάρκεια με τα πόδια: {{parking.duration}}</h4>
+        <h5>Απόσταση: {{parking.distance}}</h5>
         <div *ngIf="!parking.isopen">
           <button type="button" disabled  (click)="book(parking.Idparking, parking.cost)">Το κλείνω</button>
         </div>

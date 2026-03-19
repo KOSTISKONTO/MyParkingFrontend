@@ -107,7 +107,7 @@ hours!:any;
     this.http.post<any>('http://localhost:8080/booking/newBooking', finalform, {headers, withCredentials:false})
     .subscribe(
       response => {
-        alert(response);
+        alert('Η Κράτηση πραγματοποιήθηκε με επιτυχία!');
         this.routere.navigate(['']);
       },
       error => {
