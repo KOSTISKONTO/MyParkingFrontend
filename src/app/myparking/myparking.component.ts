@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../enviroments/enviroment';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class MyparkingComponent implements OnInit{
   uploadError = false;
   
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:8080/parking/myparking')
+    this.http.get<any>(`${environment.api_url}/parking/myparking`)
     .subscribe(
       response => {
        this.parkings=response;
@@ -60,7 +61,7 @@ export class MyparkingComponent implements OnInit{
       formData.append("files", file);
     }
 
-    this.http.post('http://localhost:8080/parking/upload-files', formData).subscribe({
+    this.http.post(`${environment.api_url}/parking/upload-files`, formData).subscribe({
       next: (responce) => {
         console.log(responce);
         this.uploadSuccess = true;
@@ -107,7 +108,7 @@ export class MyparkingComponent implements OnInit{
       return;
     }
     
-    const url = 'http://localhost:8080/parking/getfiles_of_myparking?filename=' + encodeURIComponent(fullPath);
+    const url = `${environment.api_url}/parking/getfiles_of_myparking?filename=` + encodeURIComponent(fullPath);
 
     this.http.get(url, { responseType: 'blob' }).subscribe({
       next: (blob) => {

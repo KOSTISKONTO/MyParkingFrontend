@@ -4,6 +4,7 @@ import * as SockJS from 'sockjs-client';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class WebsocketService {
 
   private connect(): void {
     this.stompClient = new Client({
-      webSocketFactory: () => new WebSocket('ws://localhost:8080/websocket'),
+      webSocketFactory: () => new WebSocket(`${environment.wsUrl}/websocket`),
       reconnectDelay: 5000, // auto-reconnect
       onConnect: () => {
        
@@ -56,7 +57,7 @@ export class WebsocketService {
   }
 
   getCities(): Observable<any[]> {
-    return this.http.get<any[]>('http://localhost:8080/parking/cities'); // προσαρμόζεις το endpoint
+    return this.http.get<any[]>(`${environment.api_url}/parking/cities`); // προσαρμόζεις το endpoint
   }
 
   

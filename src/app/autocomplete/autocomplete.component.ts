@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, filter, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../enviroments/enviroment';
 
 @Component({
   selector: 'app-autocomplete',
@@ -26,7 +27,7 @@ export class AutocompleteComponent implements OnInit {
         debounceTime(300),
         filter((value): value is string => !!value && value.length > 2),
         switchMap((value) =>
-          this.http.get<any>('http://localhost:8080/parking/location', {
+          this.http.get<any>(`${environment.api_url}/parking/location`, {
             params: { q: value }
           })
         )

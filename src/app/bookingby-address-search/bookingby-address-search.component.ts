@@ -6,6 +6,7 @@ import { CalendarComponent } from '../material/calendar/calendar.component';
 import { TimepickerComponent } from '../timepicker/timepicker.component';
 import { AuthserviceService } from '../authservice.service';
 import { MapComponent } from '../map/map.component';
+import { environment } from '../../enviroments/enviroment'
 
 @Component({
   selector: 'app-bookingby-address-search',
@@ -33,7 +34,7 @@ export class BookingbyAddressSearchComponent implements OnInit{
        this.route.params.subscribe(params => {
         this.adress=params['address'];
       
-        this.http.get<any>('http://localhost:8080/booking/todo', {
+        this.http.get<any>(`${environment.api_url}/booking/todo`, {
           params: {address: this.adress}
         }).subscribe({
           next:(res:any)=>{
@@ -72,7 +73,7 @@ export class BookingbyAddressSearchComponent implements OnInit{
       .set('hours', this.hoursbooking);
   
   
-    this.http.get<any>('http://localhost:8080/booking/availability', { params })
+    this.http.get<any>(`${environment.api_url}/booking/availability`, { params })
       .subscribe(
         response => {
           this.parkingList = response;
@@ -92,7 +93,7 @@ export class BookingbyAddressSearchComponent implements OnInit{
             const finalAddress = p.address + ', ' + responcee[0].City + ', ' + 'Ελλάδα';
            
             const params = new HttpParams().set('address', finalAddress);
-            return this.http.get<any>('http://localhost:8080/booking/coordinates', { params }).toPromise();
+            return this.http.get<any>(`${environment.api_url}/booking/coordinates`, { params }).toPromise();
           });
          
           // Εκτελούμε όλα τα requests ταυτόχρονα
@@ -170,7 +171,7 @@ availabilityy() {
     .set('time', this.timebooking)
     .set('hours', this.hoursbooking);
 
-  this.http.get<any>('http://localhost:8080/booking/availability', { params })
+  this.http.get<any>(`${environment.api_url}/booking/availability`, { params })
     .subscribe(
       response => {
         this.parkingList = response;
@@ -189,7 +190,7 @@ availabilityy() {
           const finalAddress = p.address + ', ' + this.responcee[0].City + ', ' + 'Ελλάδα';
           
           const params = new HttpParams().set('address', finalAddress);
-          return this.http.get<any>('http://localhost:8080/booking/coordinates', { params }).toPromise();
+          return this.http.get<any>(`${environment.api_url}/booking/coordinates`, { params }).toPromise();
         });
         
         // Εκτελούμε όλα τα requests ταυτόχρονα
@@ -198,7 +199,7 @@ availabilityy() {
           for (let i = 0; i < this.parkingList.length; i++) {
             this.parkingList[i].lat = coordsArray[i].lat;
             this.parkingList[i].lng = coordsArray[i].lng;
-          }
+          } 
          
 
           // Περνάμε τα πάρκινγκ με τα lat/lng στον χάρτη

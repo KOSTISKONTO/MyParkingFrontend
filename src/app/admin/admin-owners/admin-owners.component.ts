@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {environment} from '../../../enviroments/enviroment';
+
 @Component({
   selector: 'app-admin-owners',
   templateUrl: './admin-owners.component.html',
@@ -19,7 +21,7 @@ export class AdminOwnersComponent implements OnInit{
 
 
   getOwners(){
-    this.http.get<any>('http://localhost:8080/getOwners')
+    this.http.get<any>(`${environment.api_url}/getOwners`)
     .subscribe(
       response => {
         this.owners=response;

@@ -9,9 +9,9 @@ import { CalendarComponent } from '../material/calendar/calendar.component';
 import { TimepickerComponent } from '../timepicker/timepicker.component';
 import { AuthserviceService } from '../authservice.service';
 import { MapComponent } from '../map/map.component';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; 
 import { ActivatedRoute } from '@angular/router';
-
+import {environment} from '../../enviroments/enviroment';
 
 
 
@@ -116,7 +116,7 @@ availabilityy() {
     .set('time', this.timebooking)
     .set('hours', this.hoursbooking);
 
-  this.http.get<any>('http://localhost:8080/booking/availability', { params })
+  this.http.get<any>(`${environment.api_url}/booking/availability`, { params })
     .subscribe(
       response => {
         this.parkingList = response;
@@ -126,7 +126,7 @@ availabilityy() {
           const finalAddress = p.address + ', ' + this.activeCity + ', ' + 'Ελλάδα';
          
           const params = new HttpParams().set('address', finalAddress);
-          return this.http.get<any>('http://localhost:8080/booking/coordinates', { params }).toPromise();
+          return this.http.get<any>(`${environment.api_url}/booking/coordinates`, { params }).toPromise();
         });
         
         // Εκτελούμε όλα τα requests ταυτόχρονα

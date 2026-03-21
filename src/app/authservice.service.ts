@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthserviceService {
-  private login_url = 'http://localhost:8080/login';
-  private registercustomer_url = 'http://localhost:8080/register_customer';
-  private registerowner_url = 'http://localhost:8080/register_owner';
+  private login_url = `${environment.api_url}/login`;
+  private registercustomer_url = `${environment.api_url}/register_customer`;
+  private registerowner_url = `${environment.api_url}/register_owner`;
 
 
 

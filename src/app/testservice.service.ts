@@ -1,7 +1,7 @@
 import {  Injectable } from '@angular/core';
 import {HttpClient, HttpInterceptor, HttpRequest, HttpHandler, HttpEvent} from '@angular/common/http'
 import { Observable } from 'rxjs';  // Για να δουλέψουμε με παρατηρητές
-
+import { environment } from '../enviroments/enviroment';
 @Injectable({
   providedIn: 'root'
 })
@@ -31,11 +31,11 @@ export class TestserviceService implements HttpInterceptor {
 
    }
 
-   apiUrl="http://localhost:8080/register/"
+   apiUrl=`${environment.api_url}/register/`
 
 
    testservice(){
-    return this.http.get('http://localhost:8000/testsave/')
+    return this.http.get(`${environment.api_url}/testsave/`)
    }
 
    createPerson(user: any): Observable<any> {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../enviroments/enviroment';
 
 @Component({
   selector: 'app-myprofile',
@@ -16,7 +17,7 @@ export class MyprofileComponent implements OnInit{
   credentials!:any;
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:8080/myprofile')
+    this.http.get<any>(`${environment.api_url}/myprofile`)
     .subscribe(
       response => {
         this.credentials=response;

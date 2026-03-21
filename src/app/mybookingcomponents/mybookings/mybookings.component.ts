@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+import { environment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-mybookings',
@@ -16,7 +16,7 @@ export class MybookingsComponent implements OnInit{
 booking:any;
 
 ngOnInit(): void {
-  this.http.get<any>('http://localhost:8080/booking/myBookings')
+  this.http.get<any>(`${environment.api_url}/booking/myBookings`)
   .subscribe(
     response => {
      this.booking=response;

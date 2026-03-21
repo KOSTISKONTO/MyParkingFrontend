@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyprofileComponent } from 'src/app/myprofile/myprofile.component';
 import { AuthserviceService } from 'src/app/authservice.service';
-
+import { environment } from '../../../enviroments/enviroment';
 
 @Component({
   selector: 'app-admin-popup-reject',
@@ -40,7 +40,7 @@ export class AdminPopupRejectComponent {
       .set('Id', this.Id)
       .set('status', this.status);
   
-    this.http.post<any>('http://localhost:8080/parking/reject_parking_admin', null, { params })
+    this.http.post<any>(`${environment.api_url}/parking/reject_parking_admin`, null, { params })
       .subscribe(
         response => {
           alert(response.message); // Πρόσεχε: το response είναι αντικείμενο, έχει .message

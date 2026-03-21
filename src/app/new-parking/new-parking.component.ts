@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../enviroments/enviroment';
 
 @Component({
   selector: 'app-new-parking',
@@ -242,7 +243,7 @@ export class NewParkingComponent {
       };
   
       
-      this.http.post<any>('http://localhost:8080/parking/newParking', finalyform).subscribe(
+      this.http.post<any>(`${environment.api_url}/parking/newParking`, finalyform).subscribe(
         (response) => {
          
           alert('Η καταχώρηση έγινε με επιτυχία! Μεταβείτε στο Parking σας, ( ' + 'http://localhost:4200/myparking' + ' )' + 'για να ανεβάσετε τα απαιτούμενα έγγραφα, ώστε να πραγματοποιηθεί ο σχετικός έλεγχος και να καταχωρηθεί ολοκληρωτικά η επιχείρησή σας.');

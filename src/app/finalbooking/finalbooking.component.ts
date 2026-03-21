@@ -4,6 +4,7 @@ import { AuthserviceService } from '../authservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { formatNumber } from '@angular/common';
+import { environment } from '../../enviroments/enviroment';
 
 @Component({
   selector: 'app-finalbooking',
@@ -104,7 +105,8 @@ hours!:any;
     }
  
     
-    this.http.post<any>('http://localhost:8080/booking/newBooking', finalform, {headers, withCredentials:false})
+    this.http.post<any>(
+      `${environment.api_url}/booking/newBooking`, finalform, {headers, withCredentials:false})
     .subscribe(
       response => {
         alert('Η Κράτηση πραγματοποιήθηκε με επιτυχία!');

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MyparkingComponent } from 'src/app/myparking/myparking.component';
+import { environment } from '../../../enviroments/enviroment';
+
 
 @Component({
   selector: 'app-admin-parkings',
@@ -20,7 +22,7 @@ export class AdminParkingsComponent implements OnInit{
 
 
   getParkings(){
-    this.http.get<any>('http://localhost:8080/parking/getParkings')
+    this.http.get<any>(`${environment.api_url}/parking/getParkings`)
     .subscribe(
       response => {
         console.log(response);
@@ -53,7 +55,7 @@ export class AdminParkingsComponent implements OnInit{
       return;
     }
     
-    const url = 'http://localhost:8080/parking/getfilesofparking?filename=' + encodeURIComponent(fullPath);
+    const url = `${environment.api_url}/parking/getfilesofparking?filename=` + encodeURIComponent(fullPath);
 
     this.http.get(url, { responseType: 'blob' }).subscribe({
       next: (blob) => {
@@ -80,7 +82,7 @@ export class AdminParkingsComponent implements OnInit{
     const params = new HttpParams()
     .set('Id',id)
 
-    this.http.post<any>('http://localhost:8080/parking/validate_parking_admin', null, {params} )
+    this.http.post<any>(`${environment.api_url}/parking/validate_parking_admin`, null, {params} )
     .subscribe(
       response => {
         console.log(response);

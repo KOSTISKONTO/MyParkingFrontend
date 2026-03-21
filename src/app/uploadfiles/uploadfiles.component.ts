@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../enviroments/enviroment';
 @Component({
   selector: 'app-uploadfiles',
   templateUrl: './uploadfiles.component.html',
@@ -32,7 +33,7 @@ export class UploadfilesComponent {
       formData.append("files", file);
     }
 
-    this.http.post('http://localhost:8080/parking/upload-files', formData).subscribe({
+    this.http.post(`${environment.api_url}/parking/upload-files`, formData).subscribe({
       next: (responce) => {
         
         this.uploadSuccess = true;

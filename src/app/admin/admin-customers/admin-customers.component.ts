@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from '../../../enviroments/enviroment';
+
+
 @Component({
   selector: 'app-admin-customers',
   templateUrl: './admin-customers.component.html',
@@ -18,7 +21,7 @@ export class AdminCustomersComponent implements OnInit{
   }
 
   getCustomers(){
-    this.http.get<any>('http://localhost:8080/getCustomers')
+    this.http.get<any>(`${environment.api_url}/getCustomers`)
     .subscribe(
       response => {
         this.customers=response;
