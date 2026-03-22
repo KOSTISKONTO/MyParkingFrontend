@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyprofileComponent } from 'src/app/myprofile/myprofile.component';
 import { AuthserviceService } from 'src/app/authservice.service';
-import { environment } from '../../../enviroments/enviroment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin-popup-reject',

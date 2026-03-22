@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MyparkingComponent } from 'src/app/myparking/myparking.component';
-import { environment } from '../../../enviroments/enviroment';
+import { environment } from 'src/environments/environment';
 
 
 @Component({

@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, filter, switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { environment } from '../../enviroments/enviroment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-autocomplete',

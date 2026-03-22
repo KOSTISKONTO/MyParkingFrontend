@@ -4,7 +4,7 @@ import { AuthserviceService } from '../authservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { formatNumber } from '@angular/common';
-import { environment } from '../../enviroments/enviroment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-finalbooking',

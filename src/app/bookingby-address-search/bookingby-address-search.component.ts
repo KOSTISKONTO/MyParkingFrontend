@@ -6,7 +6,7 @@ import { CalendarComponent } from '../material/calendar/calendar.component';
 import { TimepickerComponent } from '../timepicker/timepicker.component';
 import { AuthserviceService } from '../authservice.service';
 import { MapComponent } from '../map/map.component';
-import { environment } from '../../enviroments/enviroment'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-bookingby-address-search',

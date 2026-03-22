@@ -11,7 +11,7 @@ import { AuthserviceService } from '../authservice.service';
 import { MapComponent } from '../map/map.component';
 import { Router } from '@angular/router'; 
 import { ActivatedRoute } from '@angular/router';
-import {environment} from '../../enviroments/enviroment';
+import { environment } from 'src/environments/environment';
 
 
 
