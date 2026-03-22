@@ -4,7 +4,7 @@ import * as SockJS from 'sockjs-client';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../enviroments/enviroment';
+import { environment } from 'src/enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
